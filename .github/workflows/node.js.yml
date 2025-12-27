@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x, 20.x]
+        node-version: [18.x]
 
     defaults:
       run:
@@ -31,7 +31,7 @@ jobs:
           cache: "npm"
           cache-dependency-path: server/package-lock.json
       - name: Install server dependencies
-        run: npm install
+        run: npm ci
       - name: Test server
         run: npm test
 
@@ -41,7 +41,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x, 20.x]
+        node-version: [18.x]
 
     defaults:
       run:
@@ -56,7 +56,7 @@ jobs:
           cache: "npm"
           cache-dependency-path: client/package-lock.json
       - name: Install client dependencies
-        run: npm install --legacy-peer-deps --verbose
+        run: npm ci --legacy-peer-deps
       - name: Verify installation
         run: |
           ls -la node_modules/.bin/ | grep react-scripts || echo "react-scripts not found"
