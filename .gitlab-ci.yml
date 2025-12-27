@@ -1,0 +1,87 @@
+stages:
+  - install
+  - build
+  - test
+  - deploy
+
+variables:
+  NODE_VERSION: "18"
+
+# Cache dependencies for faster builds
+cache:
+  paths:
+    - node_modules/
+    - client/node_modules/
+    - server/node_modules/
+
+# Install dependencies for server
+install_server:
+  stage: install
+  image: node:${NODE_VERSION}
+  script:
+    - cd server
+    - npm ci
+  artifacts:
+    paths:
+      - server/node_modules/
+    expire_in: 1 hour
+
+# Install dependencies for client
+install_client:
+  stage: install
+  image: node:${NODE_VERSION}
+  script:
+    - cd client
+    - npm ci
+  artifacts:
+    paths:
+      - client/node_modules/
+    expire_in: 1 hour
+
+# Build client
+build_client:
+  stage: build
+  image: node:${NODE_VERSION}
+  dependencies:
+    - install_client
+  script:
+    - cd client
+    - npm run build
+  artifacts:
+    paths:
+      - client/build/
+    expire_in: 1 week
+  only:
+    - main
+    - develop
+
+# Test server (if you add tests later)
+test_server:
+  stage: test
+  image: node:${NODE_VERSION}
+  dependencies:
+    - install_server
+  script:
+    - cd server
+    - echo "No tests configured yet"
+    # - npm test
+  only:
+    - main
+    - develop
+
+# Deploy to production (example using Docker)
+deploy_production:
+  stage: deploy
+  image: docker:latest
+  services:
+    - docker:dind
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  script:
+    - docker build -t $CI_REGISTRY_IMAGE:latest .
+    - docker push $CI_REGISTRY_IMAGE:latest
+    - echo "Deploy to your server using Docker"
+    # Add your deployment commands here
+  only:
+    - main
+  when: manual

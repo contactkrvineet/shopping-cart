@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: crafty-girls-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data:/data/db
+    environment:
+      - MONGO_INITDB_DATABASE=crafty-girls
+    networks:
+      - crafty-girls-network
+
+  server:
+    build: .
+    container_name: crafty-girls-server
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_ENV=production
+      - MONGODB_URI=mongodb://mongodb:27017/crafty-girls
+      - JWT_SECRET=${JWT_SECRET}
+      - PORT=5000
+    depends_on:
+      - mongodb
+    networks:
+      - crafty-girls-network
+    restart: unless-stopped
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: crafty-girls-client
+    ports:
+      - "3000:80"
+    depends_on:
+      - server
+    networks:
+      - crafty-girls-network
+    restart: unless-stopped
+
+volumes:
+  mongodb_data:
+
+networks:
+  crafty-girls-network:
+    driver: bridge
