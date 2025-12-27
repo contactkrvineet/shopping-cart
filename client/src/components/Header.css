@@ -1,0 +1,153 @@
+.header {
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.header-top {
+  padding: 16px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.header-top .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo h1 {
+  font-size: 28px;
+  color: #ff4757;
+  font-weight: 700;
+}
+
+.header-actions {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.header-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: transparent;
+  color: #2f3542;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.header-btn:hover {
+  background: #f8f9fa;
+  color: #ff4757;
+}
+
+.admin-btn {
+  background: #ffa502;
+  color: white;
+}
+
+.admin-btn:hover {
+  background: #ff7f00;
+  color: white;
+}
+
+.cart-btn {
+  position: relative;
+  padding: 8px 16px;
+  background: #ff4757;
+  color: white;
+  border-radius: 6px;
+  font-size: 20px;
+  transition: all 0.3s ease;
+}
+
+.cart-btn:hover {
+  background: #ff3838;
+  transform: scale(1.05);
+}
+
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #2ed573;
+  color: white;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.header-bottom {
+  background: #2f3542;
+  color: white;
+  padding: 12px 0;
+}
+
+.header-bottom .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+}
+
+.nav-links a {
+  color: white;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #ff4757;
+}
+
+.offer-banner {
+  background: #ffa502;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.offer-banner strong {
+  color: #2f3542;
+  font-weight: 700;
+}
+
+@media (max-width: 768px) {
+  .logo h1 {
+    font-size: 20px;
+  }
+
+  .header-actions {
+    gap: 8px;
+  }
+
+  .header-btn {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 14px;
+  }
+
+  .offer-banner {
+    display: none;
+  }
+}

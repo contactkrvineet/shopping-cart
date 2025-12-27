@@ -1,0 +1,273 @@
+.order-summary-page {
+  padding: 40px 0;
+  min-height: 80vh;
+}
+
+.success-banner {
+  text-align: center;
+  background: linear-gradient(135deg, #2ed573 0%, #26de81 100%);
+  color: white;
+  padding: 48px 32px;
+  border-radius: 16px;
+  margin-bottom: 32px;
+}
+
+.success-icon {
+  font-size: 64px;
+  margin-bottom: 16px;
+}
+
+.success-banner h1 {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.success-banner p {
+  font-size: 18px;
+  opacity: 0.95;
+}
+
+.order-details-card {
+  background: white;
+  border-radius: 16px;
+  padding: 40px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.order-header h2 {
+  font-size: 28px;
+  color: #2f3542;
+  margin-bottom: 8px;
+}
+
+.order-date {
+  color: #747d8c;
+  font-size: 16px;
+}
+
+.status-badge {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.status-badge.pending {
+  background: #ffa502;
+  color: white;
+}
+
+.status-badge.processing {
+  background: #3742fa;
+  color: white;
+}
+
+.status-badge.shipped {
+  background: #5f27cd;
+  color: white;
+}
+
+.status-badge.delivered {
+  background: #2ed573;
+  color: white;
+}
+
+.status-badge.completed {
+  background: #2ed573;
+  color: white;
+}
+
+.status-badge.cancelled {
+  background: #ff4757;
+  color: white;
+}
+
+.order-section {
+  margin-bottom: 32px;
+}
+
+.order-section h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2f3542;
+  margin-bottom: 16px;
+}
+
+.order-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.order-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 16px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.order-item-info h4 {
+  font-size: 18px;
+  color: #2f3542;
+  margin-bottom: 8px;
+}
+
+.order-item-info p {
+  font-size: 14px;
+  color: #747d8c;
+  margin-bottom: 4px;
+}
+
+.customization-text {
+  color: #ff4757 !important;
+  font-style: italic;
+}
+
+.order-item-price {
+  text-align: right;
+}
+
+.order-item-price p {
+  margin-bottom: 4px;
+  color: #2f3542;
+}
+
+.order-item-price .price {
+  color: #747d8c;
+  font-size: 14px;
+}
+
+.order-item-price .total {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ff4757;
+}
+
+.address-box {
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  border-left: 4px solid #ff4757;
+}
+
+.address-box p {
+  margin-bottom: 8px;
+  color: #2f3542;
+  font-size: 16px;
+}
+
+.payment-info {
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+.info-row:last-child {
+  margin-bottom: 0;
+}
+
+.method-badge {
+  background: #3742fa;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.order-totals {
+  background: #f8f9fa;
+  padding: 24px;
+  border-radius: 8px;
+  margin: 32px 0;
+}
+
+.total-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 12px;
+  font-size: 16px;
+  color: #2f3542;
+}
+
+.total-row.discount {
+  color: #2ed573;
+  font-weight: 600;
+}
+
+.divider {
+  height: 1px;
+  background: #dfe4ea;
+  margin: 16px 0;
+}
+
+.total-row.final {
+  font-size: 24px;
+  font-weight: 700;
+  color: #ff4757;
+  margin-bottom: 0;
+}
+
+.order-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.order-actions .btn-primary,
+.order-actions .btn-secondary {
+  flex: 1;
+  max-width: 250px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .order-details-card {
+    padding: 24px;
+  }
+
+  .order-header {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .order-item {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .order-item-price {
+    text-align: left;
+  }
+
+  .order-actions {
+    flex-direction: column;
+  }
+
+  .order-actions .btn-primary,
+  .order-actions .btn-secondary {
+    max-width: none;
+  }
+}
