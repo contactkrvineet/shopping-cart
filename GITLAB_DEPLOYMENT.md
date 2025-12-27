@@ -27,12 +27,12 @@ Go to your GitLab project: **Settings → CI/CD → Variables**
 
 Add the following variables:
 
-| Variable | Value | Protected | Masked |
-|----------|-------|-----------|--------|
-| `MONGODB_URI` | Your MongoDB connection string | ✅ | ✅ |
-| `JWT_SECRET` | Your JWT secret key | ✅ | ✅ |
-| `CI_REGISTRY_USER` | GitLab username | ❌ | ❌ |
-| `CI_REGISTRY_PASSWORD` | GitLab access token | ✅ | ✅ |
+| Variable               | Value                          | Protected | Masked |
+| ---------------------- | ------------------------------ | --------- | ------ |
+| `MONGODB_URI`          | Your MongoDB connection string | ✅        | ✅     |
+| `JWT_SECRET`           | Your JWT secret key            | ✅        | ✅     |
+| `CI_REGISTRY_USER`     | GitLab username                | ❌        | ❌     |
+| `CI_REGISTRY_PASSWORD` | GitLab access token            | ✅        | ✅     |
 
 ### 3. Enable GitLab Container Registry
 
@@ -44,18 +44,22 @@ Add the following variables:
 The `.gitlab-ci.yml` file defines four stages:
 
 ### 1. **Install Stage**
+
 - Installs dependencies for both client and server
 - Caches node_modules for faster builds
 
 ### 2. **Build Stage**
+
 - Builds the React client application
 - Creates production-ready assets
 
 ### 3. **Test Stage**
+
 - Runs tests (add your tests here)
 - Currently configured to skip if no tests exist
 
 ### 4. **Deploy Stage**
+
 - Builds Docker image
 - Pushes to GitLab Container Registry
 - Manual deployment trigger for safety
@@ -150,16 +154,19 @@ PORT=5000
 ## 🛠️ Troubleshooting
 
 ### Pipeline Fails at Install Stage
+
 - Check Node.js version compatibility
 - Verify package.json is committed
 - Clear cache: **CI/CD → Pipelines → Clear Runner Caches**
 
 ### Build Fails
+
 - Check build logs for specific errors
 - Verify all environment variables are set
 - Ensure dependencies are correctly installed
 
 ### Deployment Fails
+
 - Verify Docker is installed and running
 - Check MongoDB connection string
 - Ensure ports 3000 and 5000 are available
@@ -168,12 +175,15 @@ PORT=5000
 ## 📝 Additional Configuration
 
 ### Enable Auto DevOps
+
 1. Go to **Settings → CI/CD**
 2. Expand **Auto DevOps**
 3. Enable **Default to Auto DevOps pipeline**
 
 ### Setup Kubernetes Deployment
+
 If using GitLab Kubernetes integration:
+
 1. Go to **Infrastructure → Kubernetes clusters**
 2. Add your cluster
 3. Install GitLab Runner and Ingress
@@ -200,6 +210,7 @@ deploy_production:
 ## 🆘 Support
 
 For issues:
+
 1. Check pipeline logs in GitLab
 2. Review Docker container logs: `docker logs crafty-girls-server`
 3. Check MongoDB connection

@@ -63,8 +63,8 @@ test_server:
     - install_server
   script:
     - cd server
-    - echo "No tests configured yet"
-    # - npm test
+    - npm test
+  allow_failure: true
   only:
     - main
     - develop
