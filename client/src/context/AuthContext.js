@@ -1,6 +1,11 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
 import axios from "axios";
 
+// Configure axios base URL from environment variable
+if (process.env.REACT_APP_API_URL) {
+  axios.defaults.baseURL = process.env.REACT_APP_API_URL;
+}
+
 const AuthContext = createContext();
 
 export const useAuth = () => {

@@ -333,3 +333,80 @@ Use **AKSHARA9** for special discounts!
 ## Admin Panel
 
 Access the admin panel at `/admin` to add and manage products.
+
+---
+
+## 🚀 Deployment
+
+### Production Deployment
+
+This application is deployed across two platforms:
+
+#### Backend - Render
+
+The backend API is deployed on Render at:
+- **Production URL:** https://shopping-cart-ik1a.onrender.com
+- **Health Check:** https://shopping-cart-ik1a.onrender.com/api/health
+- **API Info:** https://shopping-cart-ik1a.onrender.com/
+
+**Environment Variables Required:**
+```
+MONGODB_URI=<your-mongodb-connection-string>
+JWT_SECRET=<your-secret-key>
+PORT=5000
+NODE_ENV=production
+```
+
+#### Frontend - Vercel
+
+The frontend is configured for deployment on Vercel.
+
+**Deployment Steps:**
+1. Fork/clone this repository to your GitHub account
+2. Sign up at [Vercel](https://vercel.com)
+3. Import the repository in Vercel
+4. Vercel will automatically detect the configuration from `vercel.json`
+5. The build will run from the `/client` directory
+6. Set environment variables in Vercel dashboard if needed
+
+**Environment Variables:**
+The frontend is pre-configured to connect to the production backend at:
+```
+REACT_APP_API_URL=https://shopping-cart-ik1a.onrender.com
+```
+
+This is set in `client/.env.production` and will be used automatically in production builds.
+
+### Testing the Deployment
+
+**Test Backend Endpoints:**
+```bash
+# Root route - API information
+curl https://shopping-cart-ik1a.onrender.com/
+
+# Health check
+curl https://shopping-cart-ik1a.onrender.com/api/health
+
+# Get all products
+curl https://shopping-cart-ik1a.onrender.com/api/products
+
+# Get all categories
+curl https://shopping-cart-ik1a.onrender.com/api/categories
+```
+
+**Test Frontend:**
+Once deployed on Vercel, visit your Vercel URL to access the full application. The frontend will automatically connect to the backend API on Render.
+
+### Local Development vs Production
+
+**Development (Local):**
+- Backend runs on `http://localhost:5000`
+- Frontend runs on `http://localhost:3000`
+- Frontend proxies API requests to backend via `proxy` setting in `client/package.json`
+
+**Production:**
+- Backend runs on Render (https://shopping-cart-ik1a.onrender.com)
+- Frontend runs on Vercel (your-app.vercel.app)
+- Frontend connects to backend using `REACT_APP_API_URL` environment variable
+
+---
