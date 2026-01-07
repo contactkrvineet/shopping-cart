@@ -333,3 +333,6 @@ Use **AKSHARA9** for special discounts!
 ## Admin Panel
 
 Access the admin panel at `/admin` to add and manage products.
+
+lsof -ti:3000 | xargs kill -9
+lsof -ti:5001 | xargs kill -9
